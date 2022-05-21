@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<form id="form" onsubmit="AddmyProduct()">
+    <input type="text" placeholder="product name" id="name">
+    <input type="text" placeholder="category" id="category">
+    <input type="text" placeholder="image url" id="image">
+    <input type="number" placeholder="price" id="price">
+    <select name="gender" id="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select>
+    <input type="text" id="sold" placeholder="sold">    
+    <button>Add</button>
+</form>
+</body>
+</html>
+<script>
+
+function Myproduct(name,category,image,price,gender,sold)
+{
+    this.name=name;
+    this.category=category;
+    this.image=image;
+    this.price=price;
+    this.gender=gender;
+    this.sold=sold;
+}
+
+
+let arr=[];
+function AddmyProduct()
+{
+    event.preventDefault();
+    let form=document.querySelector("#form");
+    let name=form.name.value;
+    let category=form.category.value;
+    let image=form.image.value;
+    let price=form.price.value;
+    let gender=form.gender.value;
+    let sold=form.sold.value;
+
+    let data=new Myproduct(name,category,image,price,gender,sold);
+    arr.push(data)
+    console.log(arr);
+
+    localStorage.setItem("Product",JSON.stringify(arr));
+}
+</script>
