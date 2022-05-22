@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #productData{
+            display: grid;
+            grid-gap: 10px;
+            width: 50%;
+            margin: auto;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>DASHBOARD</h1>
+    </div>
+    <form onsubmit="submitProduct(event)" id="productData">
+        <input type="name" placeholder="Name" id="name">
+        <input type="category" placeholder="Category" id="category">
+        <input type="image_url" placeholder="Enter url" id="image">
+        <input type="number" placeholder="Enter price" id="price">
+        <select id="gender">
+            <option value="">Select Gender</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+        </select>
+        <input type="text" value="false" id="sold">
+        <input type="submit" id="add">
+    </form>
+</body>
+</html>
+<script>
+
+    function Product(name,category,image_url,price,gender,sold){
+        this.name = name;
+        this.category = category;
+        this.image_url = image;
+        this.price = price;
+        this.gender = gender;
+        this.sold = sold;
+
+    }
+
+
+
+    let arr = [];
+
+    function submitProduct(event){
+        event.preventDefault();
+
+        let form = document.getElementById("productData");
+        let name = form.name.value;
+        let category = form.category.value;
+        let image_url = form.image.value;
+        let price = form.price.value;
+        let gender = form.gender.value;
+        let sold = form.sold.value;
+
+        let p = new Product(name,category,image_url,price,gender,sold);
+        arr.push(p)
+        localStorage.setItem("Products",JSON.stringify(arr))
+
+
+    }
+</script>
